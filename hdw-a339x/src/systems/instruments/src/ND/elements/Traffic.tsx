@@ -221,43 +221,38 @@ const TrafficIndicator: FC<TrafficProp> = memo(({ x, y, relativeAlt, vertSpeed, 
     }
 
     // Place relative altitude above/below
-    const relAltY: number = (relativeAlt > 0) ? 7 : 43.5;
-    //const taRotation = (ownHeading + (trafficHeading || 0)) % 360;
-    const taRotation = 360 - ((ownHeading - trafficHeading) % 360);
+    const relAltY: number = (relativeAlt > 0) ? -10 : 85;
+    const trafficRotation = 360 - ((ownHeading - trafficHeading) % 360);
 
     return (
         <>
             <Layer x={x} y={y}>
                 <g>
-                    {intrusionLevel === TaRaIntrusion.TRAFFIC && <image x={0} y={-5} width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_NORMAL.svg" transform={`rotate(${taRotation} 32 32)`} />}
-                    {intrusionLevel === TaRaIntrusion.PROXIMITY && <image x={0} y={-5} width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_PROXIMITY.svg" transform={`rotate(${taRotation} 32 32)`} />}
-                    {intrusionLevel === TaRaIntrusion.TA && <image x={0} y={0} width={45} height={32} xlinkHref="/A339X_Images/ND/TRAFFIC_TA.svg" />}
-                    {intrusionLevel === TaRaIntrusion.RA && <image x={0} y={0} width={45} height={32} xlinkHref="/A339X_Images/ND/TRAFFIC_RA.svg" />}
+                    {intrusionLevel === TaRaIntrusion.TRAFFIC && <image width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_NORMAL.svg" transform={`rotate(${trafficRotation} 32 32)`} />}
+                    {intrusionLevel === TaRaIntrusion.PROXIMITY && <image width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_PROXIMITY.svg" transform={`rotate(${trafficRotation} 32 32)`} />}
+                    {intrusionLevel === TaRaIntrusion.TA && <image width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_TA.svg" transform={`rotate(${trafficRotation} 32 32)`} />}
+                    {intrusionLevel === TaRaIntrusion.RA && <image width={64} height={64} xlinkHref="/A339X_Images/ND/TRAFFIC_RA.svg" transform={`rotate(${trafficRotation} 32 32)`} />}
                 </g>
 
-                <g>
-                    <text x={30} y={relAltY} fill={color} height={1.25} paintOrder="stroke" stroke="#040405" strokeWidth={1} textAnchor="end" xmlSpace="preserve">
-                        <tspan x={17.25} y={relAltY} fill={color} fontSize="20px" paintOrder="stroke" stroke="#040405" strokeWidth={1} textAnchor="middle">
+                <g transform={`translate(25 ${relAltY})`}>
+                    <text fill={color} height={1.25} paintOrder="stroke" stroke="#040405" strokeWidth={1} textAnchor="end" xmlSpace="preserve">
+                        <tspan fill={color} fontSize="20px" paintOrder="stroke" stroke="#040405" strokeWidth={1} textAnchor="middle">
                             {`${relativeAlt > 0 ? '+' : '-'}${Math.abs(relativeAlt) < 10 ? '0' : ''}${Math.abs(relativeAlt)}`}
                         </tspan>
                     </text>
-                    
+
+                    <g transform="translate(14,-19)" >
                     {(vertSpeed <= -500) && (
                         <>
-                            <path className="shadow" fill="none" strokeWidth={3} d="M 3.75 5v 11.3" />
-                            <path className="shadow" stroke="none" fillRule="evenodd" d="M 0.3 16.5 l 3.3 7.1 h 0.9 l 3.3 -7.1 H 0.3 z" />
-                            <path fill="none" stroke={color} strokeWidth={1.6} d="M 3.75 5v 11.3" />
-                            <path fill={color} stroke="none" fillRule="evenodd" d="M 0.3 16.5 l 3.3 7.1 h 0.9 l 3.3 -7.1 H 0.3 z" />
+                            <svg width="24" height="24" fill={color} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M469.333 128l85.333 0 0 512-85.333 0 0-512z"  /><path d="M725.333 640l-426.667 0 213.333 256z"  /></svg>
                         </>
                     )}
                     {(vertSpeed >= 500) && (
                         <>
-                            <path className="shadow" fill="none" strokeWidth={3} d="M 3.75 5v 11.3" />
-                            <path className="shadow" stroke="none" fillRule="evenodd" d="M 7.75 7.2 l -3.3 -7.1 h -0.9 l -3.3 7.1 H 7.75 z" />
-                            <path fill="none" stroke={color} strokeWidth={1.6} d="M 3.75 5v 11.3" />
-                            <path fill={color} stroke="none" fillRule="evenodd" d="M 7.75 7.2 l -3.3 -7.1 h -0.9 l -3.3 7.1 H 7.75 z" />
+                            <svg width="24" height="24" fill={color} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M512 128l-213.333 256 170.667 0 0 512 85.333 0 0-512 170.667 0z"  /></svg>
                         </>
                     )}
+                    </g>
                 </g>
             </Layer>
         </>
