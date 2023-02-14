@@ -18,6 +18,11 @@ export const EngPage: FC = () => {
 
             <EngineColumn x={90} y={40} engineNumber={1} />
 
+            <line className="Indicator" x1={250} y1={18} x2={225} y2={20} />
+            <text x={300} y={18} className="FillWhite FontMedium TextCenter">N2</text>
+            <text x={300} y={40} className="FillCyan FontSmall TextCenter">%</text>
+            <line className="Indicator" x1={350} y1={18} x2={375} y2={20} />
+
             <line className="Indicator" x1={250} y1={75} x2={225} y2={77} />
             <text x={300} y={75} className="FillWhite FontMedium TextCenter">F.USED</text>
             <text x={300} y={97} className="FillCyan FontSmall TextCenter">{parseInt(weightUnit) === 1 ? 'KG' : 'LBS'}</text>
@@ -269,6 +274,7 @@ const ValveGroup = ({ x, y, engineNumber }: ComponentPositionProps) => {
 const EngineColumn = ({ x, y, engineNumber }: ComponentPositionProps) => {
     // Fuel used has a step of 10 when in Kilograms and 20 when in imperial pounds
     const [weightUnit] = usePersistentProperty('CONFIG_USING_METRIC_UNIT', '1');
+    const [n2Percent] = useSimVar(`ENG N2 RPM:${engineNumber}`, 'percent', 50);
     const [fuelUsed] = useSimVar(`L:A32NX_FUEL_USED:${engineNumber}`, 'number', 500);
     const displayedFuelUsed = parseInt(weightUnit) === 1 ? Math.round(fuelUsed / 10) * 10 : Math.round(fuelUsed / 0.4535934 / 20) * 20;
 
@@ -329,6 +335,7 @@ const EngineColumn = ({ x, y, engineNumber }: ComponentPositionProps) => {
 
     return (
         <SvgGroup x={x} y={y}>
+            <text x={x} y={y-60} className="FillGreen FontLarge TextCenter">{n2Percent}</text>
             <text x={x} y={y} className="FillGreen FontLarge TextCenter">{displayedFuelUsed}</text>
 
             <QuantityGauge x={x} y={y + 85} engineNumber={engineNumber} />
