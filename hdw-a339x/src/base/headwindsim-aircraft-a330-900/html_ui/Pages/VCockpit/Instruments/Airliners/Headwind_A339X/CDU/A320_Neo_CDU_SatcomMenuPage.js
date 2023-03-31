@@ -2,15 +2,13 @@ class CDUSatcomMenuPage {
     static ShowPage(mcdu) {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
-        const activeSystem = mcdu.activeSystem;
+        mcdu.activeSystem = "SAT";
 
-        let selectedManualDial = false;
         let selectedStatus = false;
         let selectedDirectory = false;
 
         const updateView = () => {
-            const getText = (name, isSelected, extra = "", isLeft = true) => isSelected ? (isLeft ? name + " (SEL)" : "(SEL) " + name) : name + extra;
-            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === activeSystem ? Column.green : Column.white;
+            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === mcdu.activeSystem ? Column.green : Column.white;
 
             mcdu.setTemplate(FormatTemplate([
                 [new Column(4, "SATCOM MAIN MENU")],
@@ -23,10 +21,10 @@ class CDUSatcomMenuPage {
                 [new Column(1, "SAT 2 READY TO CONNECT")],
                 [new Column(1, "EUROCONTROL")],
                 [""],
-                [new Column(23, "MANUAL DIAL>", Column.right)],
+                [new Column(23, "MANUAL DIAL>", Column.inop, Column.right)],
                 [new Column(1, "SATCOM")],
                 [
-                    new Column(0, getText("<STATUS", selectedStatus), getColor("STATUS", selectedStatus)),
+                    new Column(0, "<STATUS", getColor("STATUS", selectedStatus)),
                     new Column(23, "DIRECTORY>", Column.right)
                 ],
             ]));

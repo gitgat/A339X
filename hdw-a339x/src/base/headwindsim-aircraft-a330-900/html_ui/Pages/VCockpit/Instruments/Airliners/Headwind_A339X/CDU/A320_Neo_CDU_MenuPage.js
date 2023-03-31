@@ -2,7 +2,7 @@ class CDUMenuPage {
     static ShowPage(mcdu) {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
-        const activeSystem = mcdu.activeSystem;
+        mcdu.activeSystem = "MCDU";
 
         let selectedFM = false;
         let selectedACARS = false;
@@ -13,19 +13,19 @@ class CDUMenuPage {
 
         const updateView = () => {
             const getText = (name, isSelected, extra = "", isLeft = true) => isSelected ? (isLeft ? name + " (SEL)" : "(SEL) " + name) : name + extra;
-            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === activeSystem ? Column.green : Column.white;
+            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === mcdu.activeSystem ? Column.green : Column.white;
 
             mcdu.setTemplate(FormatTemplate([
                 [new Column(7, "MCDU MENU")],
                 [new Column(22, "SELECT", Column.right)],
                 [
-                    new Column(0, getText("<FM1", selectedFM), getColor("FM1", selectedFM)),
-                    new Column(23, "NAV B/UP>", Column.right)
+                    new Column(0, getText("<FM1", selectedFM), Column.inop),
+                    new Column(23, "NAV B/UP>", Column.inop, Column.right)
                 ],
                 [""],
-                [new Column(0, getText("<ACARS", selectedACARS), getColor("ACARS", selectedACARS))],
+                [new Column(0, getText("<ACARS", selectedACARS), Column.inop)],
                 [""],
-                [new Column(0, getText("<ACMS", selectedACMS, " (REQ)"), getColor("ACMS", selectedACMS))],
+                [new Column(0, getText("<ACMS", selectedACMS, " (REQ)"), Column.inop)],
                 [""],
                 [new Column(0, getText("<CMS", selectedCMS), getColor("CMS", selectedCMS))],
                 [""],
@@ -55,7 +55,7 @@ class CDUMenuPage {
             updateView();
             setTimeout(() => {
                 mcdu.removeScratchpadMessage(NXSystemMessages.waitForSystemResponse.text);
-                CDUIdentPage.ShowPage(mcdu);
+                CDUCfdsMainMenu.ShowPage(mcdu);
             }, Math.floor(Math.random() * 400) + 200);
         };
 
@@ -65,7 +65,7 @@ class CDUMenuPage {
             updateView();
             setTimeout(() => {
                 mcdu.removeScratchpadMessage(NXSystemMessages.waitForSystemResponse.text);
-                CDUMaintenanceMenuPage.ShowPage1(mcdu);
+                CDU_CMS_MenuPage.ShowPage1(mcdu);
             }, Math.floor(Math.random() * 400) + 400);
         };
 
