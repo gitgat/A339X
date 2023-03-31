@@ -50,6 +50,7 @@ class CDU_CMS_MenuPage {
         };
         mcdu.onNextPage = () => {
             this.selectedPrint = !this.selectedPrint;
+            updateView();
         };
 
         mcdu.leftInputDelay[2] = () => {

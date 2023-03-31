@@ -80,7 +80,7 @@ class CDU_CMS_TestMenu {
                 [new Column(5, "ATA:24 ELEC")],
                 [
                     new Column(0, "<AC", Column.inop),
-                    new Column(6, "GENERATION", Column.white),
+                    new Column(6, "GENERATION", Column.inop),
                     new Column(23, "DC>", Column.inop, Column.right)
                 ],
                 [new Column(5, "ATA:26 FIRE PROT")],
