@@ -138,7 +138,7 @@ class CDU_CMS_TestMenu {
                 ],
                 [new Column(5, "ATA:31 INST")],
                 [
-                    new Column(0, "<DISPLAY", Column.inop),
+                    new Column(0, "<DISPLAY"),
                     new Column(23, "WARNING>", Column.inop, Column.right)
                 ],
                 [""],
@@ -155,6 +155,13 @@ class CDU_CMS_TestMenu {
         };
         mcdu.onDown = () => {
             this.ShowPage4(mcdu);
+        };
+
+        mcdu.leftInputDelay[3] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[3] = () => {
+            CDU_CMS_Test_Inst.ShowPage(mcdu);
         };
 
         mcdu.leftInputDelay[5] = () => {
