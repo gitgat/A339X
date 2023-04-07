@@ -13,13 +13,13 @@ class CDU_CMS_TestMenu {
                 [new Column(1, "SYSTEM REPORT/TEST 1/6")],
                 [new Column(5, "ATA:21 AIRCOND")],
                 [
-                    new Column(0, "<AVNCS VENT", Column.inop),
-                    new Column(23, "TEMP REGUL>", Column.inop, Column.right)
+                    new Column(0, "<AVNCS VENT"),
+                    new Column(23, "TEMP REGUL>", Column.right)
                 ],
                 [""],
                 [
-                    new Column(0, "<CARG VENT", Column.inop),
-                    new Column(23, "PRESS>", Column.inop, Column.right)
+                    new Column(0, "<CARG VENT"),
+                    new Column(23, "PRESS>", Column.right)
                 ],
                 [new Column(5, "ATA:22 AFS")],
                 [
@@ -50,11 +50,39 @@ class CDU_CMS_TestMenu {
             this.ShowPage2(mcdu);
         };
 
+        mcdu.leftInputDelay[0] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[0] = () => {
+            CDU_CMS_Test_Aircond_AEVC_Menu.ShowPage(mcdu);
+        };
+
+        mcdu.leftInputDelay[1] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[1] = () => {
+            CDU_CMS_Test_Aircond_VC_Menu.ShowPage(mcdu);
+        };
+
         mcdu.leftInputDelay[5] = () => {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[5] = () => {
             CDU_CMS_MenuPage.ShowPage1(mcdu);
+        };
+
+        mcdu.rightInputDelay[0] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onRightInput[0] = () => {
+            CDU_CMS_Test_Aircond_ECS_Menu.ShowPage(mcdu);
+        };
+
+        mcdu.rightInputDelay[1] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onRightInput[1] = () => {
+            CDU_CMS_Test_Aircond_CPC.ShowPage(mcdu);
         };
     }
 
@@ -128,7 +156,7 @@ class CDU_CMS_TestMenu {
             mcdu.setTemplate(FormatTemplate([
                 [new Column(1, "SYSTEM REPORT/TEST 3/6")],
                 [new Column(5, "ATA:28 FUEL")],
-                [new Column(0, "<FUEL CTL MONG SYS", Column.inop)],
+                [new Column(0, "<FUEL CTL MONG SYS")],
                 [new Column(5, "ATA:29 HYD")],
                 [new Column(0, "<HYD SYS MONG UNIT", Column.inop)],
                 [new Column(5, "ATA:30 ICE")],
@@ -155,6 +183,13 @@ class CDU_CMS_TestMenu {
         };
         mcdu.onDown = () => {
             this.ShowPage4(mcdu);
+        };
+
+        mcdu.leftInputDelay[0] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[0] = () => {
+            CDU_CMS_Test_Fuel_Menu.ShowPage(mcdu);
         };
 
         mcdu.leftInputDelay[3] = () => {

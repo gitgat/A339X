@@ -19,12 +19,12 @@ class CDU_CMS_MenuPage {
 
             mcdu.setTemplate(FormatTemplate([
                 [new Column(1, "MAINTENANCE MENU 1/2")],
-                [new Column(1, "POST")],
+                [new Column(1, "POST", Column.inop)],
                 [
                     new Column(0, "<FLIGHT REPORT", Column.inop),
                     new Column(23, selectedPrint ? "----PRINT*" : "------SEND", Column.inop, Column.right)
                 ],
-                [new Column(1, "PREVIOUS")],
+                [new Column(1, "PREVIOUS", Column.inop)],
                 [new Column(0, "<FLIGHT REPORT", Column.inop)],
                 [""],
                 [
