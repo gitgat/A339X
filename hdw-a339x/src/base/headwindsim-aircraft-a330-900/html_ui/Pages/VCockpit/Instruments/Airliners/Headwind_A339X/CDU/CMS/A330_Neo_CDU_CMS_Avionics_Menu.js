@@ -4,15 +4,15 @@ class CDU_CMS_AvionicsMenu {
         mcdu.setTemplate([
             ["AVIONICS STATUS", "1", "2"],
             [""],
-            ["VHF 3"],
+            ["<VHF 3[color]inop"],
             [""],
-            ["FCDC 1"],
+            ["<FCDC 1[color]inop"],
             [""],
-            ["DMU"],
+            ["<DMU[color]inop"],
             [""],
-            ["LGCIU 2"],
+            ["<LGCIU 2[color]inop"],
             [""],
-            ["TPIU"],
+            ["<TPIU[color]inop"],
             [""],
             ["<RETURN[color]cyan", "PAGE PRINT*[color]inop"]
         ]);
@@ -22,7 +22,7 @@ class CDU_CMS_AvionicsMenu {
         };
 
         mcdu.onLeftInput[5] = () => {
-            CDU_CMS_MenuPage.ShowPage(mcdu);
+            CDU_CMS_MenuPage.ShowPage1(mcdu);
         };
 
         // PAGE SWITCHING
@@ -39,9 +39,9 @@ class CDU_CMS_AvionicsMenu {
         mcdu.setTemplate([
             ["AVIONICS STATUS", "2", "2"],
             [""],
-            ["ADIRU3"],
+            ["<ADIRU3[color]inop"],
             [""],
-            ["SFCC1"],
+            ["<SFCC1[color]inop"],
             [""],
             [""],
             [""],
@@ -57,7 +57,7 @@ class CDU_CMS_AvionicsMenu {
         };
 
         mcdu.onLeftInput[5] = () => {
-            CDU_CMS_MenuPage.ShowPage(mcdu);
+            CDU_CMS_MenuPage.ShowPage1(mcdu);
         };
 
         // PAGE SWITCHING
