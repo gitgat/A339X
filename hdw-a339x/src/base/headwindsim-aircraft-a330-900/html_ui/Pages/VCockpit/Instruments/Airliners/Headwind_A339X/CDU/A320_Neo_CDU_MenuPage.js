@@ -19,7 +19,7 @@ class CDUMenuPage {
                 [new Column(7, "MCDU MENU")],
                 [new Column(22, "SELECT", Column.right)],
                 [
-                    new Column(0, getText("<FM1", selectedFM, " (REQ)", getColor("FMGC", selectedFM))),
+                    new Column(0, getText("<FM1", selectedFM, " (REQ)"), getColor("FMGC", selectedFM)),
                     new Column(23, "NAV B/UP>", Column.inop, Column.right)
                 ],
                 [""],
@@ -85,7 +85,7 @@ class CDUMenuPage {
             updateView();
             setTimeout(() => {
                 mcdu.removeScratchpadMessage(NXSystemMessages.waitForSystemResponse.text);
-                CDUSatcomMenuPage.ShowPage(mcdu);
+                CDU_SAT_Menu.ShowPage(mcdu);
             }, Math.floor(Math.random() * 400) + 200);
         };
 
