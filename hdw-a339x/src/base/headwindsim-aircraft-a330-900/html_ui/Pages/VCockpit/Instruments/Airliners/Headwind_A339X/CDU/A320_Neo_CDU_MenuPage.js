@@ -25,7 +25,7 @@ class CDUMenuPage {
                 [""],
                 [new Column(0, getText("<ACARS", selectedACARS), Column.inop)],
                 [""],
-                [new Column(0, getText("<ACMS", selectedACMS), getColor("ACMS", selectedCMS))],
+                [new Column(0, getText("<ACMS", selectedACMS), getColor("ACMS", selectedACMS))],
                 [""],
                 [new Column(0, getText("<CMS", selectedCMS), getColor("CMS", selectedCMS))],
                 [""],

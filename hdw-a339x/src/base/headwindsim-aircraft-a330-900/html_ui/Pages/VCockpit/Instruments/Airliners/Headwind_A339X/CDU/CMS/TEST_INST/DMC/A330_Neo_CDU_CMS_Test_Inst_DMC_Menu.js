@@ -25,7 +25,7 @@ class CDU_CMS_Test_Inst_DMC_Menu {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[5] = () => {
-            CDU_CMS_Test_Inst.ShowPage(mcdu);
+            CDU_CMS_Test_Inst_Display.ShowPage(mcdu);
         };
         mcdu.rightInputDelay[1] = () => {
             return mcdu.getDelaySwitchPage();

@@ -24,10 +24,10 @@ class CDU_CMS_Test_Inst_Recorder {
             CDU_CMS_Test_Inst_DFDRS_Menu.ShowPage(mcdu);
         };
 
-        mcdu.leftInputDelay[0] = () => {
+        mcdu.leftInputDelay[1] = () => {
             return mcdu.getDelaySwitchPage();
         };
-        mcdu.onLeftInput[0] = () => {
+        mcdu.onLeftInput[1] = () => {
             CDU_CMS_Test_Inst_ACMS_Menu.ShowPage(mcdu);
         };
 

@@ -5,7 +5,7 @@ class CDU_CMS_ACMS_Menu {
         mcdu.activeSystem = "ACMS";
 
         mcdu.setTemplate([
-            ["", "", "ACMS"],
+            ["ACMS"],
             ["PARAMETER[color]inop", "CALL UP[color]inop"],
             ["<LABEL[color]inop", "ALPHA>[color]inop"],
             ["SPECIAL FUNCT/[color]inop"],

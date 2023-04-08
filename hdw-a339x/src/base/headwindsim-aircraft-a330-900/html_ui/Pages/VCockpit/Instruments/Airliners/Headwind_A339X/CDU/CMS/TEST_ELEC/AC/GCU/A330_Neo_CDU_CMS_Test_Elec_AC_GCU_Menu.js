@@ -2,7 +2,7 @@ class CDU_CMS_Test_Elec_AC_GCU_Menu {
     static ShowPage(mcdu) {
         mcdu.clearDisplay();
         mcdu.setTemplate([
-            ["", "", "GCU EMR"],
+            ["GCU EMR"],
             [""],
             [""],
             [""]
