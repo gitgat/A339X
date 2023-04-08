@@ -5,7 +5,7 @@ class CDU_CMS_Test_Elec_AC_GCU_Menu {
             ["GCU EMR"],
             [""],
             [""],
-            [""]
+            [""],
             ["", "TEST>[color]inop"],
             [""],
             [""],

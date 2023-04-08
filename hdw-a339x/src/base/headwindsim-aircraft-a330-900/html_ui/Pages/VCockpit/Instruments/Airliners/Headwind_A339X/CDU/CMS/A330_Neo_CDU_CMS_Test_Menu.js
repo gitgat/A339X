@@ -305,7 +305,7 @@ class CDU_CMS_TestMenu {
                 [new Column(1, "SYSTEM REPORT/TEST 5/6")],
                 [new Column(5, "ATA:36 AIR BLEED")],
                 [new Column(0, "<LEAK DETECTION", Column.inop)],
-                [new Column(1, "PR/TEMPS")],
+                [new Column(1, "PR/TEMPS", Column.inop)],
                 [new Column(0, "<REGULATION CROSS FEED", Column.inop)],
                 [new Column(5, "ATA:38 WATER/WASTE")],
                 [new Column(0, "<TOILETS", Column.inop)],

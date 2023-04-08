@@ -2,7 +2,7 @@ class CDUMenuPage {
     static ShowPage(mcdu) {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
-        mcdu.activeSystem = "MCDU";
+        const activeSystem = mcdu.activeSystem;
 
         let selectedFM = false;
         let selectedACARS = false;
@@ -13,7 +13,7 @@ class CDUMenuPage {
 
         const updateView = () => {
             const getText = (name, isSelected, extra = "", isLeft = true) => isSelected ? (isLeft ? name + " (SEL)" : "(SEL) " + name) : name + extra;
-            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === mcdu.activeSystem ? Column.green : Column.white;
+            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === activeSystem ? Column.green : Column.white;
 
             mcdu.setTemplate(FormatTemplate([
                 [new Column(7, "MCDU MENU")],

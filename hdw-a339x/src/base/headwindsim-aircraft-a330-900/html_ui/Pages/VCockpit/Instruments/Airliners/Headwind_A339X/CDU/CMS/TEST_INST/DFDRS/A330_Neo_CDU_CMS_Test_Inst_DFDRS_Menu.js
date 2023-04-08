@@ -13,7 +13,7 @@ class CDU_CMS_Test_Inst_DFDRS_Menu {
             ["<GND SCANNING[color]inop"],
             ["TROUBLE SHOOT[color]inop", "GROUND[color]inop"],
             ["<DATA[color]inop", "REPORT>[color]inop"],
-            ["", "DFDRS"],
+            ["", "DFDRS[color]inop"],
             ["<RETURN[color]cyan", "INFORMATION>[color]inop"]
         ]);
 

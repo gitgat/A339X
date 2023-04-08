@@ -5,7 +5,7 @@ class CDU_CMS_Test_Elec_AC_CBMU_Menu {
             ["CBMU"],
             ["LAST LEG[color]inop", "CLASS 3[color]inop"],
             ["<REPORT[color]inop", "FAULTS>[color]inop"],
-            [""]
+            [""],
             ["", "TEST>[color]inop"],
             [""],
             [""],
