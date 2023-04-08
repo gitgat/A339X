@@ -13,15 +13,15 @@ class CDU_CMS_Test_Inst_DFDRS_Menu {
             ["<GND SCANNING[color]inop"],
             ["TROUBLE SHOOT[color]inop", "GROUND[color]inop"],
             ["<DATA[color]inop", "REPORT>[color]inop"],
-            [""],
-            ["<RETURN[color]cyan"]
+            ["", "DFDRS"],
+            ["<RETURN[color]cyan", "INFORMATION>[color]inop"]
         ]);
 
         mcdu.leftInputDelay[5] = () => {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[5] = () => {
-            CDU_CMS_Test_Inst.ShowPage(mcdu);
+            CDU_CMS_Test_Inst_Recorder.ShowPage(mcdu);
         };
 
     }

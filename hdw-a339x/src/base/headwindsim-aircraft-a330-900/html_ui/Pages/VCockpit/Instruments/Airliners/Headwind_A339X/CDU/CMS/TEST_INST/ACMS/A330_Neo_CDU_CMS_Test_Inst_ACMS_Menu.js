@@ -1,14 +1,12 @@
-class CDU_CMS_Test_Inst_EIS_Menu {
-    static ShowPage(mcdu, eisIndex) {
+class CDU_CMS_Test_Inst_ACMS_Menu {
+    static ShowPage(mcdu) {
         mcdu.clearDisplay();
-        SimVar.SetSimVarValue(`L:A32NX_DMC_DISPLAYTEST:${eisIndex}`, "Enum", 1);
-        const title = "EIS ( DMC " + eisIndex + " )";
         mcdu.setTemplate([
-            [title],
+            ["ACMS"],
             ["LAST LEG[color]inop", "CLASS 3[color]inop"],
             ["<REPORT[color]inop", "FAULTS>[color]inop"],
             ["PREVIOUS LEGS[color]inop"],
-            ["<REPORT[color]inop", "TEST>"],
+            ["<REPORT[color]inop", "TEST>[color]inop"],
             [""],
             ["<LRU IDENT[color]inop"],
             [""],
@@ -19,19 +17,12 @@ class CDU_CMS_Test_Inst_EIS_Menu {
             ["<RETURN[color]cyan"]
         ]);
 
-        mcdu.onUnload = () => SimVar.SetSimVarValue(`L:A32NX_DMC_DISPLAYTEST:${eisIndex}`, "Enum", 0);
-
         mcdu.leftInputDelay[5] = () => {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[5] = () => {
-            CDU_CMS_Test_Inst.ShowPage(mcdu);
+            CDU_CMS_Test_Inst_Recorder.ShowPage(mcdu);
         };
-        mcdu.rightInputDelay[1] = () => {
-            return mcdu.getDelaySwitchPage();
-        };
-        mcdu.onRightInput[1] = () => {
-            CDU_CMS_Test_Inst_EIS_Tests.ShowPage(mcdu, eisIndex);
-        };
+
     }
 }

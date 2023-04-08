@@ -167,10 +167,10 @@ class CDU_CMS_TestMenu {
                 [new Column(5, "ATA:31 INST")],
                 [
                     new Column(0, "<DISPLAY"),
-                    new Column(23, "WARNING>", Column.inop, Column.right)
+                    new Column(23, "WARNING>", Column.right)
                 ],
                 [""],
-                [new Column(0, "<RECORDER", Column.inop)],
+                [new Column(0, "<RECORDER")],
                 [""],
                 [new Column(0, "<RETURN", getColor("RETURN", selectedReturn))],
             ]));
@@ -196,7 +196,14 @@ class CDU_CMS_TestMenu {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[3] = () => {
-            CDU_CMS_Test_Inst.ShowPage(mcdu);
+            CDU_CMS_Test_Inst_Display.ShowPage(mcdu);
+        };
+
+        mcdu.leftInputDelay[4] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[4] = () => {
+            CDU_CMS_Test_Inst_Recorder.ShowPage(mcdu);
         };
 
         mcdu.leftInputDelay[5] = () => {
@@ -204,6 +211,13 @@ class CDU_CMS_TestMenu {
         };
         mcdu.onLeftInput[5] = () => {
             CDU_CMS_MenuPage.ShowPage1(mcdu);
+        };
+
+        mcdu.rightInputDelay[3] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onRightInput[3] = () => {
+            CDU_CMS_Test_Inst_Warning.ShowPage(mcdu);
         };
     }
 
