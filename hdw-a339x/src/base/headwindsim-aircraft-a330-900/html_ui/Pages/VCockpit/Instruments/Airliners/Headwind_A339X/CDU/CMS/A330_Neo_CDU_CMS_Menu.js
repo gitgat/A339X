@@ -3,7 +3,7 @@ class CDU_CMS_MenuPage {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
         mcdu.activeSystem = "CMS";
-
+        let selectedPrint = false;
         const isOnGround = SimVar.GetSimVarValue("GEAR IS ON GROUND","Bool");
         if(!isOnGround) {
             this.ShowPage3(mcdu);
@@ -97,6 +97,8 @@ class CDU_CMS_MenuPage {
     static ShowPage3(mcdu) {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
+
+        let selectedPrint = false;
 
         const updateView = () => {
             mcdu.setTemplate(FormatTemplate([
