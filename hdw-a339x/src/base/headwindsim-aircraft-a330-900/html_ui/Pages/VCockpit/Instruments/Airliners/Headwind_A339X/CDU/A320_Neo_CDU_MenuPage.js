@@ -19,13 +19,13 @@ class CDUMenuPage {
                 [new Column(7, "MCDU MENU")],
                 [new Column(22, "SELECT", Column.right)],
                 [
-                    new Column(0, getText("<FM1", selectedFM), Column.inop),
+                    new Column(0, getText("<FM1", selectedFM, " (REQ)", getColor("FMGC", selectedFM))),
                     new Column(23, "NAV B/UP>", Column.inop, Column.right)
                 ],
                 [""],
                 [new Column(0, getText("<ACARS", selectedACARS), Column.inop)],
                 [""],
-                [new Column(0, getText("<ACMS", selectedACMS, " (REQ)"), Column.inop)],
+                [new Column(0, getText("<ACMS", selectedACMS), getColor("ACMS", selectedCMS))],
                 [""],
                 [new Column(0, getText("<CMS", selectedCMS), getColor("CMS", selectedCMS))],
                 [""],
@@ -38,6 +38,16 @@ class CDUMenuPage {
         updateView();
 
         mcdu.setScratchpadMessage(NXSystemMessages.selectDesiredSystem);
+
+        mcdu.onLeftInput[0] = () => {
+            mcdu.setScratchpadMessage(NXSystemMessages.waitForSystemResponse);
+            selectedFM = true;
+            updateView();
+            setTimeout(() => {
+                mcdu.removeScratchpadMessage(NXSystemMessages.waitForSystemResponse.text);
+                CDUIdentPage.ShowPage(mcdu);
+            }, Math.floor(Math.random() * 400) + 400);
+        };
 
         mcdu.onLeftInput[1] = () => {
             mcdu.setScratchpadMessage(NXSystemMessages.waitForSystemResponse);
@@ -55,7 +65,7 @@ class CDUMenuPage {
             updateView();
             setTimeout(() => {
                 mcdu.removeScratchpadMessage(NXSystemMessages.waitForSystemResponse.text);
-                CDUCfdsMainMenu.ShowPage(mcdu);
+                CDU_CMS_ACMS_Menu.ShowPage(mcdu);
             }, Math.floor(Math.random() * 400) + 200);
         };
 
