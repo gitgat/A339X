@@ -107,9 +107,9 @@ class CDU_CMS_TestMenu {
                 [new Column(0, "<EMERG & DISPLAY LIGHTS", Column.inop)],
                 [new Column(5, "ATA:24 ELEC")],
                 [
-                    new Column(0, "<AC", Column.inop),
-                    new Column(6, "GENERATION", Column.inop),
-                    new Column(23, "DC>", Column.inop, Column.right)
+                    new Column(0, "<AC"),
+                    new Column(6, "GENERATION"),
+                    new Column(23, "DC>", Column.right)
                 ],
                 [new Column(5, "ATA:26 FIRE PROT")],
                 [
@@ -135,11 +135,25 @@ class CDU_CMS_TestMenu {
             this.ShowPage3(mcdu);
         };
 
+        mcdu.leftInputDelay[2] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[2] = () => {
+            CDU_CMS_Test_Elec_AC_Menu.ShowPage(mcdu);
+        };
+
         mcdu.leftInputDelay[5] = () => {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[5] = () => {
             CDU_CMS_MenuPage.ShowPage1(mcdu);
+        };
+
+        mcdu.rightInputDelay[2] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onRightInput[2] = () => {
+            CDU_CMS_Test_Elec_DC_Menu.ShowPage(mcdu);
         };
     }
 
