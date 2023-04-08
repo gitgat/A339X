@@ -10,13 +10,7 @@ class CDU_CMS_MenuPage {
             return;
         }
 
-        let selectedAvionicsStatus = false;
-        let selectedSystemReport = false;
-        let selectedPrint = true;
-
         const updateView = () => {
-            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === mcdu.activeSystem ? Column.green : Column.white;
-
             mcdu.setTemplate(FormatTemplate([
                 [new Column(1, "MAINTENANCE MENU 1/2")],
                 [new Column(1, "POST", Column.inop)],
@@ -28,11 +22,11 @@ class CDU_CMS_MenuPage {
                 [new Column(0, "<FLIGHT REPORT", Column.inop)],
                 [""],
                 [
-                    new Column(0, "<AVIONICS STATUS", getColor("AVIONICS STATUS", selectedAvionicsStatus)),
+                    new Column(0, "<AVIONICS STATUS"),
                     new Column(23, selectedPrint ? "----PRINT*" : "------SEND", Column.inop, Column.right)
                 ],
                 [""],
-                [new Column(0, "<SYSTEM REPORT/TEST", getColor("SYSTEM REPORT/TEST", selectedSystemReport))],
+                [new Column(0, "<SYSTEM REPORT/TEST")],
                 [""],
                 [""],
                 [""],
@@ -57,7 +51,7 @@ class CDU_CMS_MenuPage {
             return mcdu.getDelaySwitchPage();
         };
         mcdu.onLeftInput[2] = () => {
-            CDUCfdsAvionicsMenu.ShowPage(mcdu);
+            CDU_CMS_AvionicsMenu.ShowPage(mcdu);
         };
 
         mcdu.leftInputDelay[3] = () => {
@@ -103,12 +97,8 @@ class CDU_CMS_MenuPage {
     static ShowPage3(mcdu) {
         mcdu.clearDisplay();
         mcdu.page.Current = mcdu.page.MenuPage;
-        let selectedAvionicsStatus = false;
-        let selectedPrint = true;
 
         const updateView = () => {
-            const getColor = (system, isSelected) => isSelected ? Column.cyan : system === mcdu.activeSystem ? Column.green : Column.white;
-
             mcdu.setTemplate(FormatTemplate([
                 [new Column(1, "MAINTENANCE MENU 1/1")],
                 [new Column(1, "CURRENT")],
@@ -120,7 +110,7 @@ class CDU_CMS_MenuPage {
                 [""],
                 [""],
                 [
-                    new Column(0, "<AVIONICS STATUS", getColor("AVIONICS STATUS", selectedAvionicsStatus)),
+                    new Column(0, "<AVIONICS STATUS"),
                     new Column(23, selectedPrint ? "----PRINT*" : "------SEND", Column.inop, Column.right)
                 ],
                 [""],
@@ -133,6 +123,13 @@ class CDU_CMS_MenuPage {
         };
 
         updateView();
+
+        mcdu.leftInputDelay[2] = () => {
+            return mcdu.getDelaySwitchPage();
+        };
+        mcdu.onLeftInput[2] = () => {
+            CDU_CMS_AvionicsMenu.ShowPage(mcdu);
+        };
 
         mcdu.onNextPage = () => {
             this.selectedPrint = !this.selectedPrint;
