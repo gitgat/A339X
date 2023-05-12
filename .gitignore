@@ -44,6 +44,16 @@
 !/hdw-a339x/docs/**
 !/hdw-a339x/src/
 !/hdw-a339x/src/**
+
+/hdw-a339x-acj/*
+!/hdw-a339x-acj/README.md
+!/hdw-a339x-acj/mach.config.js
+!/hdw-a339x-acj/.env
+!/hdw-a339x-acj/docs/
+!/hdw-a339x-acj/docs/**
+!/hdw-a339x-acj/src/
+!/hdw-a339x-acj/src/**
+
 /hdw-a339x/out
 /hdw-a339x/src/base/headwindsim-aircraft-a330-900/SimObjects/Airplanes/Headwind_A330neo/model/*.bin
 /hdw-a339x/src/base/headwindsim-aircraft-a330-900/SimObjects/Airplanes/Headwind_A330neo/model/*.gltf
@@ -55,6 +65,15 @@
 /hdw-a339x/src/systems/instruments/src/EFB/dist
 /hdw-a339x/src/systems/instruments/src/EFB/web/
 
+/hdw-a339x-liveries/*
+!/hdw-a339x-liveries/README.md
+!/hdw-a339x-liveries/mach.config.js
+!/hdw-a339x-liveries/.env
+!/hdw-a339x-liveries/docs/
+!/hdw-a339x-liveries/docs/**
+!/hdw-a339x-liveries/src/
+!/hdw-a339x-liveries/src/**
+
 !/scripts/**
 
 !/tools/**
@@ -64,7 +83,6 @@
 
 # avoid issues when switching branches during transistion from old to new structure
 /src/
-/msfs-avionics-mirror/
 /headwind-aircraft-a330-900/
 /headwind-aircraft-a330-900-lock-highlight/
 /headwindsim-aircraft-a330-900/
@@ -79,6 +97,7 @@ target/
 *.wasm
 
 /build-a339x/
+/build-a339x-acj/
 
 # ======== OLD =============
 

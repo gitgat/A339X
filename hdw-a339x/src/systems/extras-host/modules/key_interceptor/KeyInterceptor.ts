@@ -1,8 +1,8 @@
 // Copyright (c) 2022 FlyByWire Simulations
 // SPDX-License-Identifier: GPL-3.0
 
-import { EventBus, KeyEvents, KeyInterceptManager } from 'msfssdk';
-import { NotificationManager } from '@shared/notification';
+import { EventBus, KeyEvents, KeyEventManager } from '@microsoft/msfs-sdk';
+import { NotificationManager, NotificationType } from '@shared/notification';
 import { PopUpDialog } from '@shared/popup';
 import { AircraftPresetsList } from '../common/AircraftPresetsList';
 
@@ -14,19 +14,16 @@ import { AircraftPresetsList } from '../common/AircraftPresetsList';
 export class KeyInterceptor {
     private eventBus: EventBus;
 
-    private keyInterceptManager: KeyInterceptManager;
-
-    private notification: NotificationManager;
+    private keyInterceptManager: KeyEventManager;
 
     private dialogVisible = false;
 
-    constructor(private readonly bus: EventBus) {
+    constructor(private readonly bus: EventBus, private readonly notification: NotificationManager) {
         this.eventBus = bus;
-        KeyInterceptManager.getManager(this.eventBus).then((manager) => {
+        KeyEventManager.getManager(this.eventBus).then((manager) => {
             this.keyInterceptManager = manager;
             this.registerIntercepts();
         });
-        this.notification = new NotificationManager();
         console.log('KeyInterceptor: Created');
     }
 
@@ -114,8 +111,8 @@ export class KeyInterceptor {
             this.notification.showNotification({
                 title: 'Aircraft Presets',
                 message: `Loading Preset is already in progress "${(AircraftPresetsList.getPresetName(loadingInProgress))}"`,
-                type: 'MESSAGE',
-                duration: 1500,
+                type: NotificationType.Message,
+                timeout: 1500,
             });
             return true;
         }
